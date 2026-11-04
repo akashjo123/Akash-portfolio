@@ -25,8 +25,8 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Work", href: pathname === "/" ? "#work" : "/#work" },
     { label: "About", href: pathname === "/" ? "#about" : "/#about" },
+    { label: "Work", href: pathname === "/" ? "#work" : "/#work" },
     { label: "Contact", href: pathname === "/" ? "#contact" : "/#contact" },
   ];
 

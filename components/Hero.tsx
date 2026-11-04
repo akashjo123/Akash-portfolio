@@ -20,6 +20,13 @@ export default function Hero() {
     },
   ];
 
+  const scrollToAbout = () => {
+    const el = document.getElementById("about");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const scrollToWork = () => {
     const el = document.getElementById("work");
     if (el) {
@@ -55,16 +62,16 @@ export default function Hero() {
             {/* Right: Clean Editorial Category Links */}
             <div className="flex items-center gap-6 sm:gap-8 text-xs font-mono uppercase tracking-widest text-ink-muted">
               <a
-                href="#work"
-                className="hover:text-ink transition-colors"
-              >
-                /WORK
-              </a>
-              <a
                 href="#about"
                 className="hover:text-ink transition-colors"
               >
                 /ABOUT
+              </a>
+              <a
+                href="#work"
+                className="hover:text-ink transition-colors"
+              >
+                /WORK
               </a>
               <a
                 href="#contact"
@@ -115,8 +122,8 @@ export default function Hero() {
               <div className="pt-4 sm:pt-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
                 {/* Outlined Play Circle Trigger */}
                 <button
-                  onClick={scrollToWork}
-                  aria-label="Explore Selected Works"
+                  onClick={scrollToAbout}
+                  aria-label="Explore About &amp; Philosophy"
                   className="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-ink flex items-center justify-center shrink-0 hover:bg-ink transition-all duration-300 active:scale-95 shadow-sm"
                 >
                   <Play
@@ -179,7 +186,7 @@ export default function Hero() {
 
             {/* Center: Scroll Down Indicator */}
             <button
-              onClick={scrollToWork}
+              onClick={scrollToAbout}
               className="flex items-center gap-2 hover:text-ink transition-colors mx-auto sm:mx-0 group"
             >
               <Mouse size={14} className="group-hover:translate-y-0.5 transition-transform" />
