@@ -1,5 +1,4 @@
 import React from "react";
-import IntroCover from "@/components/IntroCover";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import SelectedWork from "@/components/SelectedWork";
@@ -7,16 +6,13 @@ import SelectedWork from "@/components/SelectedWork";
 export default function Home() {
   return (
     <>
-      {/* 01: Architectural Cover (Shown first on website load) */}
-      <IntroCover />
-
-      {/* 02: Editorial Banner Section */}
+      {/* Editorial Hero Banner */}
       <Hero />
 
-      {/* 03: About Me Section (placed directly below the banner) */}
+      {/* About Me Section */}
       <About />
 
-      {/* 04: Selected Work */}
+      {/* Selected Work */}
       <SelectedWork />
     </>
   );

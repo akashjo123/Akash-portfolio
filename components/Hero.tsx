@@ -35,12 +35,11 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero-banner" className="relative w-full py-8 sm:py-16 px-4 sm:px-8 bg-[#EBE8E1]/60 scroll-mt-6">
+    <section id="hero-banner" className="relative w-full py-6 sm:py-12 px-4 sm:px-8 bg-[#EBE8E1]/50 scroll-mt-6">
       <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.97 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-7xl mx-auto"
       >
         {/* Editorial Frame (matching reference design) */}
