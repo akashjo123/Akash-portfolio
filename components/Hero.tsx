@@ -45,7 +45,7 @@ export default function Hero() {
         {/* Editorial Frame (matching reference design) */}
         <div className="relative bg-[#F4F2ED] border border-hairline rounded-lg overflow-hidden shadow-sm">
           {/* Top Sub-Header Bar */}
-          <div className="px-6 sm:px-10 pt-6 sm:pt-8 pb-4 flex items-center justify-between border-b border-hairline/60">
+          <div className="px-6 sm:px-10 py-5 sm:py-6 flex items-center justify-between border-b border-hairline/60">
             {/* Left: Minimal Hamburger Indicator */}
             <div className="flex items-center gap-3">
               <div className="space-y-1 w-5 cursor-pointer group">
@@ -58,38 +58,39 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Right: Clean Editorial Category Links */}
-            <div className="flex items-center gap-6 sm:gap-8 text-xs font-mono uppercase tracking-widest text-ink-muted">
-              <a
-                href="#about"
-                className="hover:text-ink transition-colors"
-              >
-                /ABOUT
-              </a>
-              <a
-                href="#work"
-                className="hover:text-ink transition-colors"
-              >
-                /WORK
-              </a>
-              <a
-                href="#contact"
-                className="hover:text-ink transition-colors"
-              >
-                /CONTACT
-              </a>
-            </div>
-          </div>
+            {/* Right: Clean Editorial Category Links + Discipline Vertical Badge */}
+            <div className="flex items-center gap-6 sm:gap-10">
+              <div className="flex items-center gap-6 sm:gap-8 text-xs font-mono uppercase tracking-widest text-ink-muted">
+                <a
+                  href="#about"
+                  className="hover:text-ink transition-colors"
+                >
+                  /ABOUT
+                </a>
+                <a
+                  href="#work"
+                  className="hover:text-ink transition-colors"
+                >
+                  /WORK
+                </a>
+                <a
+                  href="#contact"
+                  className="hover:text-ink transition-colors"
+                >
+                  /CONTACT
+                </a>
+              </div>
 
-          {/* Right Edge Rotated Vertical Badge (from reference design) */}
-          <div className="hidden lg:flex absolute top-20 right-6 z-20 items-center gap-2 select-none pointer-events-none">
-            <div className="w-[1.5px] h-14 bg-ink" />
-            <div className="text-[9px] font-mono uppercase tracking-widest text-ink leading-tight">
-              <span>UI/UX</span>
-              <br />
-              <span>DESIGN &amp;</span>
-              <br />
-              <span>FRONT-END</span>
+              {/* Discipline Vertical Badge (Cleanly integrated in header with black line, no image overlap) */}
+              <div className="hidden sm:flex items-center gap-2.5 pl-6 border-l-2 border-ink">
+                <div className="text-[9px] font-mono uppercase tracking-wider text-ink leading-tight font-semibold">
+                  <span>UI/UX</span>
+                  <br />
+                  <span>DESIGN &amp;</span>
+                  <br />
+                  <span>FRONT-END</span>
+                </div>
+              </div>
             </div>
           </div>
 
