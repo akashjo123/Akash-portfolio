@@ -13,103 +13,87 @@ export default function ProjectArtboard({
   variant = "card",
   className = "",
 }: ProjectArtboardProps) {
-  // Art-directed visuals for each project
   switch (slug) {
     case "koko":
-      return <KokoArtboard variant={variant} className={className} />;
+      return <KokoStudioMockup className={className} />;
     case "wooden-clouds":
-      return <WoodenCloudsArtboard variant={variant} className={className} />;
+      return <WoodenCloudsStudioMockup className={className} />;
     case "orange-industries":
-      return <OrangeIndustriesArtboard variant={variant} className={className} />;
+      return <OrangeIndustriesStudioMockup className={className} />;
     case "school-management-platform":
-      return <SchoolPlatformArtboard variant={variant} className={className} />;
+      return <SchoolPlatformStudioMockup className={className} />;
     case "walkie-talkie-solution":
-      return <WalkieTalkieArtboard variant={variant} className={className} />;
+      return <WalkieTalkieStudioMockup className={className} />;
     default:
-      return <DefaultArtboard title={slug} variant={variant} className={className} />;
+      return <DefaultStudioMockup title={slug} className={className} />;
   }
 }
 
 /* ------------------------------------------------------------------
-   1. KOKO — Spatial Audio & Lifestyle Flagship
+   Card 1: KOKO — Angled MacBook Pro Studio Mockup
+   Inspired by Reference Image (Card 1: Floating laptop in studio)
 ------------------------------------------------------------------- */
-function KokoArtboard({ variant, className }: { variant: string; className: string }) {
-  const isHero = variant === "hero" || variant === "wide";
-
+function KokoStudioMockup({ className }: { className: string }) {
   return (
     <div
-      className={`relative w-full h-full bg-[#ECE9E0] text-ink overflow-hidden select-none border border-hairline ${className} flex flex-col justify-between p-6 sm:p-8 font-sans transition-transform duration-700 ease-out`}
+      className={`relative w-full h-full bg-[#E5E3DC] overflow-hidden select-none flex items-center justify-center p-6 sm:p-10 ${className}`}
     >
-      {/* Background Architectural Grid Lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <div className="absolute top-1/4 left-0 right-0 h-px bg-hairline" />
-        <div className="absolute top-2/3 left-0 right-0 h-px bg-hairline" />
-        <div className="absolute left-1/3 top-0 bottom-0 w-px bg-hairline" />
-        <div className="absolute left-3/4 top-0 bottom-0 w-px bg-hairline" />
+      {/* Studio Radial Ambient Lighting */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_35%,rgba(255,255,255,0.7)_0%,rgba(215,212,204,0.4)_60%,rgba(195,191,182,0.8)_100%)]" />
+
+      {/* Subtle Studio Floor Shadow */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-12 bg-ink/15 rounded-full blur-xl pointer-events-none" />
+
+      {/* Minimal Top-Right Red Corner Arrow (from reference design) */}
+      <div className="absolute top-4 right-4 z-20 text-[#D84A38] text-sm font-sans font-light select-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+        ↗
       </div>
 
-      {/* Top Spec Header */}
-      <div className="relative z-10 flex justify-between items-start text-[11px] tracking-widest uppercase font-mono text-ink-muted">
-        <div>
-          <span className="text-ink font-semibold">KOKO SPECIMEN 01</span>
-          <span className="block text-[10px] text-ink-muted/80">360° SPATIAL ACOUSTIC CORE</span>
-        </div>
-        <div className="text-right">
-          <span className="inline-block w-2 h-2 rounded-full bg-accent mr-1.5 animate-pulse" />
-          <span>CALIBRATED / 48kHz 24-BIT</span>
-        </div>
-      </div>
+      {/* Floating Angled Laptop Composition */}
+      <div className="relative z-10 w-full max-w-sm sm:max-w-md transform -rotate-3 hover:rotate-0 transition-transform duration-700 ease-out">
+        {/* Laptop Screen Assembly */}
+        <div className="relative mx-auto w-[280px] sm:w-[340px] aspect-[16/10] bg-[#111111] rounded-t-xl p-2.5 shadow-2xl border border-neutral-700">
+          {/* Top Notch / Camera */}
+          <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-black rounded-full flex items-center justify-center">
+            <span className="w-1 h-1 rounded-full bg-neutral-600" />
+          </div>
 
-      {/* Centerpiece: Precision Acoustic Geometry */}
-      <div className="relative z-10 my-auto py-8 flex flex-col items-center justify-center">
-        <div className="relative w-48 h-48 sm:w-60 sm:h-60 flex items-center justify-center">
-          {/* Outer dispersion concentric rings */}
-          <div className="absolute inset-0 rounded-full border border-hairline/80 animate-[spin_60s_linear_infinite]" />
-          <div className="absolute inset-4 rounded-full border border-dashed border-ink/20" />
-          <div className="absolute inset-8 rounded-full border border-accent/40" />
-
-          {/* Speaker driver baffle representation */}
-          <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#171717] text-canvas shadow-xl flex flex-col items-center justify-center p-4 border-4 border-[#D9D6CE]">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#2A2926] border border-accent/60 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-accent" />
+          {/* Screen Content: Editorial Koko Audio Interface */}
+          <div className="w-full h-full bg-[#FAF9F5] rounded-t-md p-3.5 flex flex-col justify-between overflow-hidden text-ink">
+            <div className="flex justify-between items-center border-b border-hairline/60 pb-1.5 text-[9px] font-mono text-ink-muted">
+              <span className="font-bold text-ink">KOKO® ACOUSTICS</span>
+              <span>SERIES ALPHA // 48kHz</span>
             </div>
-            <span className="mt-2 text-[9px] font-mono tracking-widest text-[#A8B7A3]">
-              SERIES ALPHA
-            </span>
-          </div>
 
-          {/* Soundstage angle calipers */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-canvas px-2 py-0.5 border border-hairline text-[9px] font-mono uppercase text-ink-muted">
-            0° DISPERSION AXIS
-          </div>
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-canvas px-2 py-0.5 border border-hairline text-[9px] font-mono uppercase text-ink-muted">
-            120° ACOUSTIC BAFFLE
+            <div className="my-auto py-2 flex items-center justify-between">
+              <div>
+                <span className="text-[7px] font-mono uppercase tracking-widest text-ink-muted block">
+                  SPATIAL 360° ENGINE
+                </span>
+                <span className="text-sm font-sans font-bold tracking-tight text-ink">
+                  Acoustic Core
+                </span>
+                <span className="text-[8px] font-mono text-ink-muted block mt-0.5">
+                  Walnut &amp; Anodized Baffle
+                </span>
+              </div>
+              <div className="w-14 h-14 rounded-full border-2 border-hairline flex items-center justify-center bg-surface">
+                <div className="w-8 h-8 rounded-full bg-ink flex items-center justify-center">
+                  <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-center text-[7px] font-mono text-ink-muted pt-1 border-t border-hairline/60">
+              <span>LATENCY: 0.8ms</span>
+              <span className="text-accent-dark font-semibold">CALIBRATED</span>
+            </div>
           </div>
         </div>
 
-        {/* Dynamic Waveform Representation */}
-        <div className="w-full max-w-xs mt-6 flex items-center justify-between gap-1 h-8 px-4 bg-canvas/60 rounded border border-hairline backdrop-blur-sm">
-          {[40, 65, 30, 85, 95, 70, 45, 80, 60, 35, 90, 75, 50, 65, 40].map(
-            (val, idx) => (
-              <span
-                key={idx}
-                className="w-1 bg-[#171717] rounded-full transition-all duration-300"
-                style={{ height: `${val}%`, opacity: idx % 2 === 0 ? 0.9 : 0.4 }}
-              />
-            )
-          )}
-        </div>
-      </div>
-
-      {/* Bottom Material & System Callouts */}
-      <div className="relative z-10 flex justify-between items-end text-[11px] font-mono border-t border-hairline pt-4">
-        <div>
-          <span className="text-ink-muted block text-[10px]">MATERIAL FINISH</span>
-          <span className="font-semibold text-ink">ANODIZED ALUMINIUM &amp; WALNUT</span>
-        </div>
-        <div className="text-right">
-          <span className="text-ink-muted block text-[10px]">ACOUSTIC RESPONSE</span>
-          <span className="font-semibold text-ink">22Hz — 32,000Hz ±1.5dB</span>
+        {/* Laptop Keyboard Base & Hinge */}
+        <div className="relative mx-auto w-[310px] sm:w-[380px] h-3.5 bg-gradient-to-b from-[#CAC7BE] to-[#9E9B92] rounded-b-xl shadow-xl flex items-center justify-center">
+          <div className="w-16 h-1 bg-[#7C7A72] rounded-t-sm" />
         </div>
       </div>
     </div>
@@ -117,89 +101,52 @@ function KokoArtboard({ variant, className }: { variant: string; className: stri
 }
 
 /* ------------------------------------------------------------------
-   2. WOODEN CLOUDS — Architectural Monograph & Orthographic Archive
+   Card 2: WOODEN CLOUDS — Architectural Monograph / Spatial Tablet
+   Inspired by Reference Image (Card 4: Organic materials / botanical flatlay)
 ------------------------------------------------------------------- */
-function WoodenCloudsArtboard({ variant, className }: { variant: string; className: string }) {
+function WoodenCloudsStudioMockup({ className }: { className: string }) {
   return (
     <div
-      className={`relative w-full h-full bg-[#F0ECE1] text-ink overflow-hidden select-none border border-hairline ${className} flex flex-col justify-between p-6 sm:p-8 font-sans`}
+      className={`relative w-full h-full bg-[#DDD9CF] overflow-hidden select-none flex items-center justify-center p-6 sm:p-10 ${className}`}
     >
-      {/* Editorial Watermark Grid */}
-      <div className="absolute right-6 top-6 text-[48px] sm:text-[72px] font-serif font-light text-ink/5 pointer-events-none select-none">
-        02 / ARCHIVE
+      {/* Warm Ambient Sunlight Shadow Casting */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(255,255,255,0.6)_0%,rgba(220,216,206,0.3)_50%,rgba(185,181,170,0.8)_100%)]" />
+
+      {/* Architectural Shadow angle */}
+      <div className="absolute -top-12 -left-12 w-96 h-96 bg-gradient-to-br from-black/10 via-black/5 to-transparent rotate-12 pointer-events-none" />
+
+      {/* Top-Right Red Corner Arrow */}
+      <div className="absolute top-4 right-4 z-20 text-[#D84A38] text-sm font-sans font-light select-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+        ↗
       </div>
 
-      {/* Top Header */}
-      <div className="relative z-10 flex justify-between items-start text-[11px] tracking-widest uppercase font-mono text-ink-muted">
-        <div>
-          <span className="text-ink font-semibold">WOODEN CLOUDS LAB</span>
-          <span className="block text-[10px] text-ink-muted/80">STRUCTURAL TIMBER MONOGRAPH</span>
+      {/* Monograph Hardcover Book / Tablet Presentation */}
+      <div className="relative z-10 w-full max-w-sm sm:max-w-md bg-[#FAF8F5] p-6 rounded shadow-2xl border border-hairline transform rotate-2 hover:rotate-0 transition-transform duration-700 ease-out">
+        <div className="flex justify-between items-start text-[9px] font-mono tracking-widest text-ink-muted border-b border-hairline pb-2 mb-4">
+          <span className="font-bold text-ink">WOODEN CLOUDS LAB</span>
+          <span>NORDIC TIMBER 02</span>
         </div>
-        <div className="text-right">
-          <span>SCALE 1:100 @ A2</span>
-          <span className="block text-[10px] text-ink-muted/80">LAT 59.3293° N</span>
+
+        {/* Orthographic Architectural Vector Sketch */}
+        <div className="py-2">
+          <svg viewBox="0 0 240 100" className="w-full h-auto text-ink stroke-current" fill="none" strokeWidth="1">
+            <line x1="10" y1="80" x2="230" y2="80" strokeWidth="1.5" />
+            <polygon points="30,55 120,25 210,55" fill="#EAE8E1" />
+            <rect x="50" y="55" width="8" height="25" fill="#171717" />
+            <rect x="95" y="42" width="8" height="38" fill="#171717" />
+            <rect x="145" y="42" width="8" height="38" fill="#171717" />
+            <rect x="190" y="55" width="8" height="25" fill="#171717" />
+            <circle cx="60" cy="22" r="5" stroke="#A8B7A3" strokeWidth="1" />
+            <line x1="60" y1="22" x2="140" y2="80" stroke="#A8B7A3" strokeDasharray="2 2" />
+          </svg>
         </div>
-      </div>
 
-      {/* Centerpiece: Orthographic Architectural Section */}
-      <div className="relative z-10 my-auto py-6 flex flex-col items-center justify-center">
-        <svg
-          viewBox="0 0 400 220"
-          className="w-full max-w-md h-auto stroke-current text-ink"
-          fill="none"
-          strokeWidth="1.2"
-        >
-          {/* Ground datum line */}
-          <line x1="20" y1="180" x2="380" y2="180" stroke="#171717" strokeWidth="2" />
-          <line x1="20" y1="184" x2="380" y2="184" stroke="#D9D6CE" strokeWidth="1" strokeDasharray="4 4" />
-
-          {/* Timber frame structure */}
-          {/* Roof line angled */}
-          <polygon
-            points="50,120 200,60 350,120 340,130 200,75 60,130"
-            fill="#EAE8E1"
-            stroke="#171717"
-            strokeWidth="1.5"
-          />
-
-          {/* Vertical Glulam Columns */}
-          <rect x="80" y="125" width="12" height="55" fill="#171717" />
-          <rect x="150" y="98" width="12" height="82" fill="#171717" />
-          <rect x="238" y="98" width="12" height="82" fill="#171717" />
-          <rect x="308" y="125" width="12" height="55" fill="#171717" />
-
-          {/* Sun angle trajectory */}
-          <line x1="80" y1="40" x2="220" y2="180" stroke="#A8B7A3" strokeWidth="1.5" strokeDasharray="3 3" />
-          <circle cx="80" cy="40" r="8" stroke="#A8B7A3" strokeWidth="1.5" fill="#F4F2ED" />
-          <text x="96" y="44" fill="#77746D" fontSize="8" fontFamily="monospace" stroke="none">
-            SUMMER SOLSTICE 62°
-          </text>
-
-          {/* Timber Joinery Callout Box */}
-          <rect x="248" y="112" width="50" height="24" fill="#F4F2ED" stroke="#D9D6CE" />
-          <text x="254" y="127" fill="#171717" fontSize="7" fontFamily="monospace" stroke="none">
-            MORTISE &amp; TENON
-          </text>
-          <line x1="250" y1="112" x2="242" y2="105" stroke="#77746D" strokeWidth="1" />
-        </svg>
-
-        {/* Architectural Caption Pill */}
-        <div className="mt-4 px-3 py-1 bg-surface border border-hairline rounded text-[10px] font-mono text-ink-muted flex items-center gap-3">
-          <span>PROJECT: NORDIC CANOPY</span>
-          <span className="text-hairline">|</span>
-          <span>MATERIAL: CROSS-LAMINATED LARCH</span>
-        </div>
-      </div>
-
-      {/* Bottom Footer Details */}
-      <div className="relative z-10 flex justify-between items-end text-[11px] font-mono border-t border-hairline pt-4">
-        <div>
-          <span className="text-ink-muted block text-[10px]">EMBODIED CARBON</span>
-          <span className="font-semibold text-ink">-42 kg CO₂e / m² (NET NEGATIVE)</span>
-        </div>
-        <div className="text-right">
-          <span className="text-ink-muted block text-[10px]">STUDIO ARCHIVE ID</span>
-          <span className="font-semibold text-ink">WC-2024-MONO-07</span>
+        <div className="mt-3 pt-2 border-t border-hairline flex justify-between items-end text-[9px] font-mono text-ink-muted">
+          <div>
+            <span className="block text-[8px] uppercase">MATERIAL ARCHIVE</span>
+            <span className="font-bold text-ink">LARCH &amp; HINOKI TIMBER</span>
+          </div>
+          <span className="text-accent-dark font-semibold">SCALE 1:100</span>
         </div>
       </div>
     </div>
@@ -207,96 +154,56 @@ function WoodenCloudsArtboard({ variant, className }: { variant: string; classNa
 }
 
 /* ------------------------------------------------------------------
-   3. ORANGE INDUSTRIES — Industrial Telemetry OS
+   Card 3: ORANGE INDUSTRIES — Industrial Telemetry Cockpit
+   Inspired by Reference Image (Card 3: Smart tactile device screen)
 ------------------------------------------------------------------- */
-function OrangeIndustriesArtboard({ variant, className }: { variant: string; className: string }) {
+function OrangeIndustriesStudioMockup({ className }: { className: string }) {
   return (
     <div
-      className={`relative w-full h-full bg-[#1A1A18] text-[#F4F2ED] overflow-hidden select-none border border-neutral-700 ${className} flex flex-col justify-between p-6 sm:p-8 font-sans`}
+      className={`relative w-full h-full bg-[#181816] overflow-hidden select-none flex items-center justify-center p-6 sm:p-10 ${className}`}
     >
-      {/* Subtle Dark Grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-1/3 left-0 right-0 h-px bg-neutral-600" />
-        <div className="absolute top-2/3 left-0 right-0 h-px bg-neutral-600" />
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-neutral-600" />
+      {/* Dark Studio Radial Highlight */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(45,45,40,0.8)_0%,rgba(20,20,18,0.95)_100%)]" />
+
+      {/* Top-Right Red Corner Arrow */}
+      <div className="absolute top-4 right-4 z-20 text-[#D84A38] text-sm font-sans font-light select-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+        ↗
       </div>
 
-      {/* Top Cockpit Telemetry Bar */}
-      <div className="relative z-10 flex justify-between items-start text-[11px] tracking-widest uppercase font-mono text-neutral-400">
-        <div>
-          <span className="text-[#F4F2ED] font-semibold">ORANGE OS // TELEMETRY HUB</span>
-          <span className="block text-[10px] text-neutral-500">FLEET CELL #09B ACTIVE</span>
+      {/* Telemetry Console Frame */}
+      <div className="relative z-10 w-full max-w-sm sm:max-w-md bg-[#242421] border border-neutral-700 rounded-xl p-5 shadow-2xl text-[#F4F2ED]">
+        <div className="flex justify-between items-center border-b border-neutral-700 pb-2 mb-3 text-[9px] font-mono text-neutral-400">
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+            <span className="font-bold text-white">ORANGE TELEMETRY OS</span>
+          </div>
+          <span className="text-accent">ROBOTIC BAY 09B</span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
-          <span className="text-accent text-[11px] font-bold">ALL SYSTEMS NOMINAL</span>
-        </div>
-      </div>
 
-      {/* Centerpiece: Real-Time Instrumentation Cockpit */}
-      <div className="relative z-10 my-auto py-4 w-full">
-        <div className="grid grid-cols-3 gap-3 max-w-lg mx-auto">
-          {/* Card 1: Actuator Torque */}
-          <div className="bg-[#242420] border border-neutral-700 p-3 rounded">
-            <div className="text-[9px] uppercase font-mono text-neutral-400">ACTUATOR TORQUE</div>
-            <div className="text-xl font-mono font-bold text-[#F4F2ED] mt-1">
-              184.2 <span className="text-xs text-neutral-400 font-normal">Nm</span>
-            </div>
-            <div className="mt-2 h-8 flex items-end gap-1">
-              {[30, 45, 60, 55, 70, 65, 80, 75, 68].map((h, i) => (
-                <div
-                  key={i}
-                  className="flex-1 bg-accent/80 rounded-t-sm"
-                  style={{ height: `${h}%` }}
-                />
+        {/* Telemetry Sparklines */}
+        <div className="grid grid-cols-2 gap-2.5 my-2">
+          <div className="p-2.5 bg-[#1B1B19] rounded border border-neutral-800">
+            <span className="text-[8px] font-mono text-neutral-500 block">TORQUE VECTOR</span>
+            <span className="text-base font-mono font-bold text-white">184.2 Nm</span>
+            <div className="mt-1.5 h-4 flex items-end gap-1">
+              {[40, 65, 80, 50, 75, 90, 60].map((h, i) => (
+                <div key={i} className="flex-1 bg-accent/80 rounded-t-sm" style={{ height: `${h}%` }} />
               ))}
             </div>
           </div>
 
-          {/* Card 2: Joint Harmonics */}
-          <div className="bg-[#242420] border border-neutral-700 p-3 rounded">
-            <div className="text-[9px] uppercase font-mono text-neutral-400">VIBRATION DELTA</div>
-            <div className="text-xl font-mono font-bold text-accent mt-1">
-              0.024 <span className="text-xs text-neutral-400 font-normal">G-RMS</span>
-            </div>
-            <div className="mt-3 flex items-center justify-between text-[8px] font-mono text-neutral-400 border-t border-neutral-700 pt-1">
-              <span>FREQ</span>
-              <span>120Hz REF</span>
-            </div>
-          </div>
-
-          {/* Card 3: Cycle Time */}
-          <div className="bg-[#242420] border border-neutral-700 p-3 rounded">
-            <div className="text-[9px] uppercase font-mono text-neutral-400">CYCLE LATENCY</div>
-            <div className="text-xl font-mono font-bold text-[#F4F2ED] mt-1">
-              4.82 <span className="text-xs text-neutral-400 font-normal">SEC</span>
-            </div>
-            <div className="mt-3 flex items-center justify-between text-[8px] font-mono text-neutral-400 border-t border-neutral-700 pt-1">
-              <span>UPTIME</span>
-              <span>99.98%</span>
+          <div className="p-2.5 bg-[#1B1B19] rounded border border-neutral-800">
+            <span className="text-[8px] font-mono text-neutral-500 block">CYCLE LATENCY</span>
+            <span className="text-base font-mono font-bold text-accent">4.82s</span>
+            <div className="mt-1.5 text-[8px] font-mono text-neutral-400">
+              UPTIME 99.98%
             </div>
           </div>
         </div>
 
-        {/* Interactive Schematic Diagram */}
-        <div className="mt-4 max-w-lg mx-auto bg-[#242420] border border-neutral-700 p-3 rounded flex items-center justify-between text-[10px] font-mono text-neutral-300">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded bg-accent" />
-            <span>ROBOTIC ARM 06-AXIS CALIBRATED</span>
-          </div>
-          <span className="text-neutral-500">SYNC: 12ms STREAM</span>
-        </div>
-      </div>
-
-      {/* Bottom Footer Status */}
-      <div className="relative z-10 flex justify-between items-end text-[11px] font-mono border-t border-neutral-700 pt-4 text-neutral-400">
-        <div>
-          <span className="text-neutral-500 block text-[10px]">SECURITY ARCHITECTURE</span>
-          <span className="text-[#F4F2ED] font-semibold">AIR-GAPPED TLS 1.3 / EDGE NODE</span>
-        </div>
-        <div className="text-right">
-          <span className="text-neutral-500 block text-[10px]">OPERATOR SEAT</span>
-          <span className="text-[#F4F2ED] font-semibold">CONSOLE TERMINAL #04</span>
+        <div className="pt-2 border-t border-neutral-800 flex justify-between items-center text-[8px] font-mono text-neutral-400">
+          <span>AIR-GAPPED TLS 1.3</span>
+          <span className="text-white font-semibold">ALL SYSTEMS NOMINAL</span>
         </div>
       </div>
     </div>
@@ -304,86 +211,52 @@ function OrangeIndustriesArtboard({ variant, className }: { variant: string; cla
 }
 
 /* ------------------------------------------------------------------
-   4. SCHOOL MANAGEMENT PLATFORM — EdTech Academic Portal
+   Card 4: SCHOOL MANAGEMENT PLATFORM — Academic Roadmap Matrix
+   Inspired by Reference Image (Card 5: Dual phones / clean UI cards)
 ------------------------------------------------------------------- */
-function SchoolPlatformArtboard({ variant, className }: { variant: string; className: string }) {
+function SchoolPlatformStudioMockup({ className }: { className: string }) {
   return (
     <div
-      className={`relative w-full h-full bg-[#FAF9F5] text-ink overflow-hidden select-none border border-hairline ${className} flex flex-col justify-between p-6 sm:p-8 font-sans`}
+      className={`relative w-full h-full bg-[#EAE7DF] overflow-hidden select-none flex items-center justify-center p-6 sm:p-10 ${className}`}
     >
-      {/* Top Header */}
-      <div className="relative z-10 flex justify-between items-start text-[11px] tracking-widest uppercase font-mono text-ink-muted">
-        <div>
-          <span className="text-ink font-semibold">HORIZON ACADEMIC PORTAL</span>
-          <span className="block text-[10px] text-ink-muted/80">MULTI-CAMPUS DEGREE ORCHESTRATION</span>
-        </div>
-        <div className="text-right">
-          <span>TERM: AUTUMN 2024</span>
-          <span className="block text-[10px] text-accent-dark font-medium">ENROLLMENT OPEN</span>
-        </div>
+      {/* Studio Lighting */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_30%,rgba(255,255,255,0.7)_0%,rgba(225,221,212,0.4)_60%,rgba(195,191,180,0.8)_100%)]" />
+
+      {/* Top-Right Red Corner Arrow */}
+      <div className="absolute top-4 right-4 z-20 text-[#D84A38] text-sm font-sans font-light select-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+        ↗
       </div>
 
-      {/* Centerpiece: Academic Degree Pathway & Schedule Matrix */}
-      <div className="relative z-10 my-auto py-4 w-full max-w-md mx-auto space-y-3">
-        {/* Prerequisite Node Graph Mock */}
-        <div className="bg-canvas border border-hairline p-3.5 rounded shadow-sm">
-          <div className="flex justify-between items-center text-[10px] font-mono text-ink-muted mb-2.5">
-            <span className="uppercase font-semibold text-ink">B.S. ARCHITECTURE &amp; COMPUTATION</span>
-            <span>112 / 128 CREDITS</span>
-          </div>
+      {/* Academic Dashboard Card Mock */}
+      <div className="relative z-10 w-full max-w-sm sm:max-w-md bg-canvas border border-hairline rounded-lg p-5 shadow-2xl space-y-3">
+        <div className="flex justify-between items-center text-[9px] font-mono text-ink-muted border-b border-hairline pb-2">
+          <span className="font-bold text-ink">HORIZON ACADEMY PORTAL</span>
+          <span className="text-accent-dark font-medium">AUTUMN 2024</span>
+        </div>
 
-          {/* Visual Degree Tree */}
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex-1 p-2 bg-[#EAE8E1] rounded border border-hairline text-center">
-              <span className="block text-[9px] font-mono text-ink-muted">CS 101</span>
-              <span className="text-[10px] font-bold text-ink">FOUNDATIONS</span>
-              <span className="block text-[8px] text-accent-dark font-semibold mt-0.5">COMPLETED</span>
+        <div className="space-y-1.5">
+          <div className="text-[10px] font-sans font-semibold text-ink">
+            Interactive Degree Pathway
+          </div>
+          <div className="grid grid-cols-3 gap-1.5 text-center text-[8px] font-mono">
+            <div className="p-1.5 bg-surface rounded border border-hairline">
+              <span className="font-bold block text-ink">CS 101</span>
+              <span className="text-accent-dark">DONE</span>
             </div>
-            <span className="text-ink-muted text-xs">→</span>
-            <div className="flex-1 p-2 bg-[#EAE8E1] rounded border border-hairline text-center">
-              <span className="block text-[9px] font-mono text-ink-muted">ARC 240</span>
-              <span className="text-[10px] font-bold text-ink">PARAMETRIC</span>
-              <span className="block text-[8px] text-accent-dark font-semibold mt-0.5">COMPLETED</span>
+            <div className="p-1.5 bg-surface rounded border border-hairline">
+              <span className="font-bold block text-ink">ARC 240</span>
+              <span className="text-accent-dark">DONE</span>
             </div>
-            <span className="text-ink-muted text-xs">→</span>
-            <div className="flex-1 p-2 bg-canvas rounded border-2 border-ink text-center shadow-sm">
-              <span className="block text-[9px] font-mono text-ink-muted">DES 480</span>
-              <span className="text-[10px] font-bold text-ink">CAPSTONE</span>
-              <span className="block text-[8px] text-accent-dark font-semibold mt-0.5">IN PROGRESS</span>
+            <div className="p-1.5 bg-canvas rounded border-2 border-ink">
+              <span className="font-bold block text-ink">DES 480</span>
+              <span className="text-accent-dark">ACTIVE</span>
             </div>
           </div>
         </div>
 
-        {/* Faculty Fast-Gradebook Snippet */}
-        <div className="bg-canvas border border-hairline p-3 rounded">
-          <div className="text-[9px] font-mono text-ink-muted uppercase tracking-wider mb-1.5 flex justify-between">
-            <span>HIGH-SPEED EVALUATION QUEUE</span>
-            <span>KEYBOARD (TAB + ENTER)</span>
-          </div>
-          <div className="space-y-1 text-[11px] font-mono">
-            <div className="flex items-center justify-between p-1.5 bg-[#EAE8E1]/60 rounded">
-              <span>01. ADAMS, ELENA</span>
-              <span className="font-bold text-ink">GRADE: 94 / 100</span>
-              <span className="text-[9px] text-accent-dark font-semibold">VALIDATED</span>
-            </div>
-            <div className="flex items-center justify-between p-1.5 bg-canvas rounded border border-hairline">
-              <span>02. CHEN, MARCUS</span>
-              <span className="font-bold text-ink">GRADE: 89 / 100</span>
-              <span className="text-[9px] text-ink-muted font-semibold">SUBMITTED</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Footer Details */}
-      <div className="relative z-10 flex justify-between items-end text-[11px] font-mono border-t border-hairline pt-4">
-        <div>
-          <span className="text-ink-muted block text-[10px]">ACCESSIBILITY STANDARD</span>
-          <span className="font-semibold text-ink">WCAG 2.1 AA / SECTION 508</span>
-        </div>
-        <div className="text-right">
-          <span className="text-ink-muted block text-[10px]">ACTIVE CAMPUS NODES</span>
-          <span className="font-semibold text-ink">18 UNIVERSITIES / 45K STUDENTS</span>
+        <div className="pt-2 border-t border-hairline flex justify-between text-[8px] font-mono text-ink-muted">
+          <span>18 CAMPUSES / 45K STUDENTS</span>
+          <span className="font-semibold text-ink">WCAG 2.1 AA</span>
         </div>
       </div>
     </div>
@@ -391,73 +264,54 @@ function SchoolPlatformArtboard({ variant, className }: { variant: string; class
 }
 
 /* ------------------------------------------------------------------
-   5. WALKIE-TALKIE SOLUTION — Mission-Critical PTT App
+   Card 5: WALKIE-TALKIE SOLUTION — Smartphone with Cable / Tactical UI
+   Inspired by Reference Image (Card 2: Smartphone with gradient & blue cable)
 ------------------------------------------------------------------- */
-function WalkieTalkieArtboard({ variant, className }: { variant: string; className: string }) {
+function WalkieTalkieStudioMockup({ className }: { className: string }) {
   return (
     <div
-      className={`relative w-full h-full bg-[#1C1D1B] text-[#F4F2ED] overflow-hidden select-none border border-neutral-800 ${className} flex flex-col justify-between p-6 sm:p-8 font-sans`}
+      className={`relative w-full h-full bg-[#E3E0D8] overflow-hidden select-none flex items-center justify-center p-6 sm:p-10 ${className}`}
     >
-      {/* Tactical Glow Effect */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Studio Directional Light */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,rgba(255,255,255,0.75)_0%,rgba(215,211,202,0.4)_60%,rgba(190,186,176,0.85)_100%)]" />
 
-      {/* Top Tactical Status */}
-      <div className="relative z-10 flex justify-between items-start text-[11px] tracking-widest uppercase font-mono text-neutral-400">
-        <div>
-          <span className="text-[#F4F2ED] font-semibold">VOCALSTREAM // FIELD-PTT</span>
-          <span className="block text-[10px] text-neutral-500">ENCRYPTED AES-256 GCM</span>
-        </div>
-        <div className="flex items-center gap-1.5 text-accent text-[11px]">
-          <span className="inline-block w-2 h-2 rounded-full bg-accent" />
-          <span>CHANNEL 04 : LOGISTICS</span>
-        </div>
+      {/* Top-Right Red Corner Arrow */}
+      <div className="absolute top-4 right-4 z-20 text-[#D84A38] text-sm font-sans font-light select-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+        ↗
       </div>
 
-      {/* Centerpiece: Massive Tactile PTT Push Zone & Audio Spectrogram */}
-      <div className="relative z-10 my-auto py-4 flex flex-col items-center justify-center">
-        {/* Audio Spectrogram Band */}
-        <div className="w-full max-w-xs mb-4 flex items-center justify-center gap-1.5 h-10 px-4 bg-[#262825] border border-neutral-700 rounded-lg">
-          {[20, 45, 80, 95, 60, 40, 75, 100, 85, 55, 30, 70, 90, 40, 20].map((h, i) => (
-            <div
-              key={i}
-              className="w-1.5 bg-accent rounded-full transition-all duration-150"
-              style={{
-                height: `${h}%`,
-                opacity: i > 4 && i < 11 ? 1 : 0.4,
-              }}
-            />
-          ))}
+      {/* Modern Smartphone Mockup */}
+      <div className="relative z-10 w-44 sm:w-52 aspect-[9/18] bg-[#171717] rounded-[34px] p-2.5 shadow-2xl border-2 border-neutral-700">
+        {/* Dynamic Island Notch */}
+        <div className="absolute top-3.5 left-1/2 -translate-x-1/2 w-14 h-3 bg-black rounded-full z-20 flex items-center justify-end pr-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-neutral-800" />
         </div>
 
-        {/* Giant Tactile PTT Button */}
-        <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#262825] border-4 border-neutral-700 flex flex-col items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 group cursor-pointer">
-          <div className="absolute inset-2 rounded-full border border-dashed border-accent/40" />
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#171717] border-2 border-accent flex flex-col items-center justify-center shadow-inner">
-            <span className="text-xl sm:text-2xl font-black tracking-tight text-white group-hover:text-accent">
-              PTT
-            </span>
-            <span className="text-[8px] font-mono tracking-widest text-neutral-400 uppercase mt-0.5">
-              HOLD TO TALK
-            </span>
+        {/* Screen with Radiant Audio Spectrogram & PTT Interface */}
+        <div className="w-full h-full bg-[#1A1A18] rounded-[24px] overflow-hidden flex flex-col justify-between p-3.5 text-white">
+          <div className="flex justify-between items-center text-[7px] font-mono text-neutral-400 pt-3">
+            <span>9:41</span>
+            <span className="text-accent font-semibold">CHANNEL 04</span>
           </div>
-        </div>
 
-        {/* 30-Sec Replay Ribbon Mock */}
-        <div className="mt-4 px-3 py-1 bg-[#262825] border border-neutral-700 rounded text-[9px] font-mono text-neutral-400 flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-          <span>INSTANT REPLAY BUFFER: 00:24 AGO AVAILABLE</span>
-        </div>
-      </div>
+          {/* Central PTT Trigger Glow */}
+          <div className="my-auto flex flex-col items-center">
+            {/* Audio Waveform */}
+            <div className="w-full flex items-center justify-center gap-1 h-5 mb-3">
+              {[20, 50, 90, 70, 40, 80, 100, 60, 30].map((h, i) => (
+                <div key={i} className="w-1 bg-accent rounded-full" style={{ height: `${h}%` }} />
+              ))}
+            </div>
 
-      {/* Bottom Footer Details */}
-      <div className="relative z-10 flex justify-between items-end text-[11px] font-mono border-t border-neutral-800 pt-4 text-neutral-400">
-        <div>
-          <span className="text-neutral-500 block text-[10px]">LATENCY BENCHMARK</span>
-          <span className="text-[#F4F2ED] font-semibold">&lt; 85ms VOICE PACKET DELIVERY</span>
-        </div>
-        <div className="text-right">
-          <span className="text-neutral-500 block text-[10px]">HARDWARE INTEGRATION</span>
-          <span className="text-[#F4F2ED] font-semibold">BLE PTT PEDAL &amp; HEADSET SYNC</span>
+            <div className="w-16 h-16 rounded-full bg-[#272723] border border-accent flex flex-col items-center justify-center shadow-lg">
+              <span className="text-xs font-black tracking-wider text-white">PTT</span>
+              <span className="text-[6px] font-mono text-neutral-400">HOLD</span>
+            </div>
+          </div>
+
+          <div className="text-[7px] font-mono text-neutral-400 text-center border-t border-neutral-800 pt-1">
+            <span>SUB-85ms OPUS STREAM</span>
+          </div>
         </div>
       </div>
     </div>
@@ -465,28 +319,12 @@ function WalkieTalkieArtboard({ variant, className }: { variant: string; classNa
 }
 
 /* ------------------------------------------------------------------
-   Default Fallback Artboard
+   Default Fallback
 ------------------------------------------------------------------- */
-function DefaultArtboard({
-  title,
-  variant,
-  className,
-}: {
-  title: string;
-  variant: string;
-  className: string;
-}) {
+function DefaultStudioMockup({ title, className }: { title: string; className: string }) {
   return (
-    <div
-      className={`w-full h-full bg-surface text-ink border border-hairline p-8 flex flex-col justify-between ${className}`}
-    >
-      <div className="text-xs font-mono uppercase tracking-widest text-ink-muted">
-        PORTFOLIO CASE STUDY
-      </div>
-      <div className="my-auto text-center">
-        <h3 className="text-2xl font-bold tracking-tight">{title}</h3>
-      </div>
-      <div className="text-xs font-mono text-ink-muted">AKASH JOSEPH DESIGN STUDIO</div>
+    <div className={`w-full h-full bg-surface border border-hairline p-8 flex items-center justify-center ${className}`}>
+      <span className="text-sm font-mono text-ink-muted">{title}</span>
     </div>
   );
 }

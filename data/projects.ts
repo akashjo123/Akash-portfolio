@@ -1,6 +1,8 @@
 export interface Project {
   slug: string;
   title: string;
+  displayTitle?: string;
+  tags: string[];
   number: string;
   category: string;
   year: string;
@@ -61,6 +63,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "koko",
     title: "Koko",
+    displayTitle: "Koko audio flagship",
+    tags: ["Web design", "Branding"],
     number: "01",
     category: "Brand & Direct-to-Consumer Platform",
     year: "2024",
@@ -206,6 +210,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "wooden-clouds",
     title: "Wooden Clouds",
+    displayTitle: "Wooden Clouds architecture",
+    tags: ["Branding", "Web design"],
     number: "02",
     category: "Architecture & Spatial Design Editorial",
     year: "2024",
@@ -351,6 +357,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "orange-industries",
     title: "Orange Industries",
+    displayTitle: "Orange Industries telemetry OS",
+    tags: ["Development", "Support"],
     number: "03",
     category: "Industrial Telemetry & Operational OS",
     year: "2023",
@@ -496,6 +504,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "school-management-platform",
     title: "School Management Platform",
+    displayTitle: "School Management Platform",
+    tags: ["Web design", "Development"],
     number: "04",
     category: "EdTech System & Multi-Role Academic Portal",
     year: "2023",
@@ -641,6 +651,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "walkie-talkie-solution",
     title: "Walkie-Talkie Solution",
+    displayTitle: "Walkie-Talkie mission-critical app",
+    tags: ["Development", "Branding"],
     number: "05",
     category: "Hardware-Software Push-to-Talk Mobile App",
     year: "2022",
@@ -784,3 +796,4 @@ export const PROJECTS: Project[] = [
     prevSlug: "school-management-platform",
   },
 ];
+
