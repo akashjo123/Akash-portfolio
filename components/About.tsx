@@ -9,7 +9,7 @@ import { Check, Copy, Sparkles, SlidersHorizontal, ArrowDownRight } from "lucide
 export default function About() {
   // Interactive state controls matching the user's Pinterest design
   const [copied, setCopied] = useState(false);
-  const [photoMode, setPhotoMode] = useState<"akash-mono" | "akash-amber" | "original-pin">("akash-mono");
+  const [photoMode, setPhotoMode] = useState<"akash-studio" | "akash-mono" | "original-pin">("akash-studio");
   const [signatureMode, setSignatureMode] = useState<"akash" | "claudia">("akash");
   const [textMode, setTextMode] = useState<"custom" | "original">("custom");
 
@@ -107,6 +107,20 @@ export default function About() {
               </span>
               <button
                 onClick={() => {
+                  setPhotoMode("akash-studio");
+                  setSignatureMode("akash");
+                  setTextMode("custom");
+                }}
+                className={`px-2.5 py-1 rounded transition-colors ${
+                  photoMode === "akash-studio" && textMode === "custom"
+                    ? "bg-ink text-canvas font-medium shadow-sm"
+                    : "bg-surface text-ink-muted hover:text-ink hover:bg-canvas"
+                }`}
+              >
+                Studio Natural
+              </button>
+              <button
+                onClick={() => {
                   setPhotoMode("akash-mono");
                   setSignatureMode("akash");
                   setTextMode("custom");
@@ -117,7 +131,7 @@ export default function About() {
                     : "bg-surface text-ink-muted hover:text-ink hover:bg-canvas"
                 }`}
               >
-                Akash Edition
+                Studio B&amp;W
               </button>
               <button
                 onClick={() => {
@@ -132,19 +146,6 @@ export default function About() {
                 }`}
               >
                 1:1 Pin Replica
-              </button>
-              <button
-                onClick={() => {
-                  setPhotoMode("akash-amber");
-                  setSignatureMode("akash");
-                }}
-                className={`px-2.5 py-1 rounded transition-colors ${
-                  photoMode === "akash-amber"
-                    ? "bg-ink text-canvas font-medium shadow-sm"
-                    : "bg-surface text-ink-muted hover:text-ink hover:bg-canvas"
-                }`}
-              >
-                Amber Studio
               </button>
             </div>
           </div>
@@ -196,31 +197,31 @@ export default function About() {
                   {/* Subtle darkening vignette */}
                   <div className="absolute inset-0 bg-black/10 pointer-events-none" />
                 </div>
-              ) : photoMode === "akash-amber" ? (
-                // Akash Joseph in warm studio lighting
+              ) : photoMode === "akash-mono" ? (
+                // Akash Joseph in monochrome studio lighting
                 <div className="relative w-full h-full">
                   <Image
-                    src="/hero-portrait-2.jpg"
-                    alt="Akash Joseph in editorial amber lighting"
+                    src="/akash-about.jpg"
+                    alt="Akash Joseph — UI/UX Designer &amp; Front-End Developer"
                     fill
-                    className="object-cover object-center filter contrast-115"
-                    priority
-                  />
-                  {/* Contrast gradient for left text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent pointer-events-none" />
-                </div>
-              ) : (
-                // Akash Joseph in high-contrast monochrome studio lighting (matches Pinterest aesthetic)
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/hero-portrait.jpg"
-                    alt="Akash Joseph — High-contrast monochrome editorial portrait"
-                    fill
-                    className="object-cover object-center filter grayscale contrast-125 brightness-95"
+                    className="object-cover object-[center_20%] filter grayscale contrast-125 brightness-95"
                     priority
                   />
                   {/* Left-edge shadow gradient to guarantee crisp white typography contrast */}
                   <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/30 to-transparent pointer-events-none" />
+                </div>
+              ) : (
+                // Akash Joseph in authentic natural studio lighting (new portrait)
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/akash-about.jpg"
+                    alt="Akash Joseph — UI/UX Designer &amp; Front-End Developer"
+                    fill
+                    className="object-cover object-[center_20%] filter contrast-[1.04]"
+                    priority
+                  />
+                  {/* Left-edge shadow gradient for 'me.' readability */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/25 to-transparent pointer-events-none" />
                 </div>
               )}
 
@@ -235,7 +236,7 @@ export default function About() {
               <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-[10px] font-mono text-white/80 z-20">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 <span className="tracking-wider uppercase">
-                  {photoMode === "original-pin" ? "REFERENCE PIN" : photoMode === "akash-amber" ? "STUDIO AMBER" : "STUDIO B&W"}
+                  {photoMode === "original-pin" ? "REFERENCE PIN" : photoMode === "akash-mono" ? "STUDIO B&W" : "STUDIO NATURAL"}
                 </span>
               </div>
             </div>
