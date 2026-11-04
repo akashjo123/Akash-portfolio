@@ -11,12 +11,12 @@ export default function Hero() {
 
   const portraits = [
     {
-      src: "/hero-portrait.jpg",
-      alt: "Akash Joseph — Creative Director & Front-End Developer in warm studio sunset light",
+      src: "/akash-portrait.jpg",
+      alt: "Akash Joseph — UI/UX Designer & Front-End Developer",
     },
     {
       src: "/hero-portrait-2.jpg",
-      alt: "Akash Joseph — Editorial Portrait in amber terracotta lighting",
+      alt: "Akash Joseph — Editorial Studio Portrait",
     },
   ];
 
@@ -158,11 +158,11 @@ export default function Hero() {
                       alt={portraits[activePhoto].alt}
                       fill
                       priority
-                      className="object-cover object-center filter contrast-[1.04]"
+                      className="object-cover object-[center_18%] filter contrast-[1.02]"
                       sizes="(max-width: 1024px) 100vw, 40vw"
                     />
-                    {/* Warm ambient sunset overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                    {/* Subtle bottom shadow vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
                   </motion.div>
                 </AnimatePresence>
 
