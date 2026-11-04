@@ -28,8 +28,14 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full py-6 sm:py-10 px-4 sm:px-8 bg-[#EBE8E1]/60">
-      <div className="max-w-7xl mx-auto">
+    <section id="hero-banner" className="relative w-full py-8 sm:py-16 px-4 sm:px-8 bg-[#EBE8E1]/60 scroll-mt-6">
+      <motion.div
+        initial={{ opacity: 0, y: 60, scale: 0.97 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-7xl mx-auto"
+      >
         {/* Editorial Frame (matching reference design) */}
         <div className="relative bg-[#F4F2ED] border border-hairline rounded-lg overflow-hidden shadow-sm">
           {/* Top Sub-Header Bar */}
@@ -205,7 +211,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
