@@ -1,261 +1,209 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, MoveDown, Compass, Terminal, Layers } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, Play, Mouse } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
-  const [activeTab, setActiveTab] = useState<"craft" | "code" | "system">("craft");
-  const shouldReduceMotion = useReducedMotion();
+  const [activePhoto, setActivePhoto] = useState<0 | 1>(0);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.12,
-        delayChildren: 0.1,
-      },
+  const portraits = [
+    {
+      src: "/hero-portrait.jpg",
+      alt: "Akash Joseph — Creative Director & Front-End Developer in warm studio sunset light",
     },
-  };
+    {
+      src: "/hero-portrait-2.jpg",
+      alt: "Akash Joseph — Editorial Portrait in amber terracotta lighting",
+    },
+  ];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.65,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
+  const scrollToWork = () => {
+    const el = document.getElementById("work");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <section className="relative w-full pt-12 pb-20 sm:pt-20 sm:pb-32 overflow-hidden border-b border-hairline">
-      {/* Editorial Grid Background Hairlines */}
-      <div className="absolute inset-0 pointer-events-none max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="w-full h-full border-l border-r border-hairline/40 grid grid-cols-1 md:grid-cols-12 pointer-events-none">
-          <div className="hidden md:block col-span-8 border-r border-hairline/30 h-full" />
-        </div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
-        {/* Top Status & Context Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-12 sm:pb-16 gap-4 border-b border-hairline/60">
-          <div className="flex items-center gap-2.5">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-            </span>
-            <span className="text-xs font-mono tracking-widest uppercase text-ink-muted">
-              AVAILABLE FOR SELECT PROJECTS &amp; PRODUCT ADVISORY
-            </span>
-          </div>
-
-          <div className="text-xs font-mono tracking-wider uppercase text-ink-muted flex items-center gap-3">
-            <span>KOCHI, IN / REMOTE</span>
-            <span className="text-hairline">|</span>
-            <span className="text-ink font-semibold">FRONT-END &amp; PRODUCT DESIGN</span>
-          </div>
-        </div>
-
-        {/* Main Headline & Art-Directed Hero Grid */}
-        <div className="pt-12 sm:pt-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Headlines & Editorial Statement */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-7 space-y-8"
-          >
-            <motion.div variants={itemVariants}>
-              <span className="inline-block px-2.5 py-1 bg-surface border border-hairline rounded text-[11px] font-mono tracking-widest uppercase text-ink-muted">
-                PORTFOLIO 2024 — AKASH JOSEPH
+    <section className="relative w-full py-6 sm:py-10 px-4 sm:px-8 bg-[#EBE8E1]/60">
+      <div className="max-w-7xl mx-auto">
+        {/* Editorial Frame (matching reference design) */}
+        <div className="relative bg-[#F4F2ED] border border-hairline rounded-lg overflow-hidden shadow-sm">
+          {/* Top Sub-Header Bar */}
+          <div className="px-6 sm:px-10 pt-6 sm:pt-8 pb-4 flex items-center justify-between border-b border-hairline/60">
+            {/* Left: Minimal Hamburger Indicator */}
+            <div className="flex items-center gap-3">
+              <div className="space-y-1 w-5 cursor-pointer group">
+                <span className="block h-[1.5px] w-5 bg-ink transition-all group-hover:w-4" />
+                <span className="block h-[1.5px] w-3.5 bg-ink transition-all group-hover:w-5" />
+                <span className="block h-[1.5px] w-5 bg-ink" />
+              </div>
+              <span className="text-[11px] font-mono tracking-widest uppercase text-ink-muted hidden sm:inline ml-2">
+                INDEX 2024
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl sm:text-6xl lg:text-7xl font-sans font-medium tracking-tight text-ink leading-[1.04]"
-            >
-              Designing digital experiences that feel{" "}
-              <span className="font-serif italic font-normal tracking-normal text-ink">
-                intuitive.
-              </span>
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-lg sm:text-xl text-ink-muted font-normal leading-relaxed max-w-2xl"
-            >
-              I’m Akash Joseph, a UI/UX Designer and Front-End Developer focused on creating thoughtful, functional and visually engaging digital experiences.
-            </motion.p>
-
-            <motion.div variants={itemVariants} className="pt-4 flex flex-wrap items-center gap-4">
+            {/* Right: Clean Editorial Category Links */}
+            <div className="flex items-center gap-6 sm:gap-8 text-xs font-mono uppercase tracking-widest text-ink-muted">
               <a
                 href="#work"
-                className="inline-flex items-center gap-3 px-6 py-3.5 bg-ink text-canvas rounded hover:bg-neutral-800 text-sm font-mono tracking-wide transition-all duration-200 active:scale-95 group"
+                className="hover:text-ink transition-colors"
               >
-                <span>EXPLORE WORK (05)</span>
-                <ArrowDown size={14} className="group-hover:translate-y-0.5 transition-transform" />
+                /WORK
               </a>
-
+              <a
+                href="#about"
+                className="hover:text-ink transition-colors"
+              >
+                /ABOUT
+              </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-canvas border border-hairline hover:border-ink rounded text-sm font-mono tracking-wide text-ink transition-all duration-200"
+                className="hover:text-ink transition-colors"
               >
-                <span>GET IN TOUCH</span>
+                /CONTACT
               </a>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          {/* Right Column: Carefully Art-Directed Abstract Visual Composition */}
-          <div className="lg:col-span-5 w-full">
-            <div className="relative bg-surface border border-hairline rounded-lg p-6 sm:p-7 shadow-sm">
-              {/* Composition Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-hairline text-xs font-mono text-ink-muted">
-                <span className="uppercase font-semibold tracking-wider text-ink">
-                  DESIGN × ENGINEERING RATIO
+          {/* Right Edge Rotated Vertical Badge (from reference design) */}
+          <div className="hidden lg:flex absolute top-20 right-6 z-20 items-center gap-2 select-none pointer-events-none">
+            <div className="w-[1.5px] h-14 bg-ink" />
+            <div className="text-[9px] font-mono uppercase tracking-widest text-ink leading-tight">
+              <span>UI/UX</span>
+              <br />
+              <span>DESIGN &amp;</span>
+              <br />
+              <span>FRONT-END</span>
+            </div>
+          </div>
+
+          {/* Main Hero Banner Grid */}
+          <div className="p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+            {/* Left Column: Headlines & Editorial Copy */}
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-8 sm:space-y-10">
+              {/* Status Indicator */}
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#D84A38] animate-pulse inline-block" />
+                <span className="text-[11px] font-mono tracking-widest uppercase text-ink-muted">
+                  AVAILABLE FOR FREELANCE &amp; SELECT CONTRACTS
                 </span>
-                <span className="text-[10px] text-ink-muted">01 // INTERFACE FRAMEWORK</span>
               </div>
 
-              {/* Interactive Framework Switcher */}
-              <div className="grid grid-cols-3 gap-2 my-4">
-                <button
-                  onClick={() => setActiveTab("craft")}
-                  className={`py-2 px-2.5 text-[11px] font-mono rounded border transition-all text-center ${
-                    activeTab === "craft"
-                      ? "bg-canvas border-ink text-ink font-bold shadow-sm"
-                      : "bg-surface border-hairline text-ink-muted hover:border-neutral-400"
-                  }`}
-                >
-                  <Compass size={13} className="mx-auto mb-1 opacity-70" />
-                  <span>UI/UX CRAFT</span>
-                </button>
-                <button
-                  onClick={() => setActiveTab("system")}
-                  className={`py-2 px-2.5 text-[11px] font-mono rounded border transition-all text-center ${
-                    activeTab === "system"
-                      ? "bg-canvas border-ink text-ink font-bold shadow-sm"
-                      : "bg-surface border-hairline text-ink-muted hover:border-neutral-400"
-                  }`}
-                >
-                  <Layers size={13} className="mx-auto mb-1 opacity-70" />
-                  <span>SYSTEMS</span>
-                </button>
-                <button
-                  onClick={() => setActiveTab("code")}
-                  className={`py-2 px-2.5 text-[11px] font-mono rounded border transition-all text-center ${
-                    activeTab === "code"
-                      ? "bg-canvas border-ink text-ink font-bold shadow-sm"
-                      : "bg-surface border-hairline text-ink-muted hover:border-neutral-400"
-                  }`}
-                >
-                  <Terminal size={13} className="mx-auto mb-1 opacity-70" />
-                  <span>FRONT-END</span>
-                </button>
+              {/* Giant Editorial Headline Name (Matching reference serif typography) */}
+              <div className="space-y-2">
+                <h1 className="font-serif text-6xl sm:text-8xl lg:text-[104px] tracking-tight leading-[0.88] text-ink uppercase">
+                  Akash
+                  <br />
+                  Joseph
+                </h1>
+                <span className="block text-[10px] sm:text-xs font-mono tracking-[0.24em] uppercase text-ink-muted pt-3">
+                  UI/UX DESIGNER &amp; FRONT-END DEVELOPER
+                </span>
               </div>
 
-              {/* Dynamic Composition Display */}
-              <div className="bg-canvas border border-hairline rounded p-5 min-h-[220px] flex flex-col justify-between">
-                {activeTab === "craft" && (
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-start">
-                      <span className="text-xs font-mono uppercase text-ink-muted">
-                        PHILOSOPHY // 01
-                      </span>
-                      <span className="w-2 h-2 rounded-full bg-accent" />
-                    </div>
-                    <p className="text-sm text-ink leading-relaxed font-sans">
-                      &ldquo;Interface design is not merely decoration—it is the tactile language through which humans navigate complex digital systems.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-2 pt-2 border-t border-hairline text-[11px] font-mono text-ink-muted">
-                      <span>USER-CENTRIC</span>
-                      <span>·</span>
-                      <span>INFORMATION ARCHITECTURE</span>
-                      <span>·</span>
-                      <span>HEURISTICS</span>
-                    </div>
-                  </div>
-                )}
+              {/* Bottom Interactive Group: Play Reel Circle + Paragraph */}
+              <div className="pt-4 sm:pt-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
+                {/* Outlined Play Circle Trigger */}
+                <button
+                  onClick={scrollToWork}
+                  aria-label="Explore Selected Works"
+                  className="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-ink flex items-center justify-center shrink-0 hover:bg-ink transition-all duration-300 active:scale-95 shadow-sm"
+                >
+                  <Play
+                    size={22}
+                    className="text-ink fill-ink group-hover:text-canvas group-hover:fill-canvas ml-1 transition-colors"
+                  />
+                  {/* Subtle ring pulse on hover */}
+                  <span className="absolute inset-0 rounded-full border border-ink/40 scale-100 group-hover:scale-110 transition-transform duration-300 pointer-events-none" />
+                </button>
 
-                {activeTab === "system" && (
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-start">
-                      <span className="text-xs font-mono uppercase text-ink-muted">
-                        FOUNDATIONS // 02
-                      </span>
-                      <span className="w-2 h-2 rounded-full bg-accent" />
-                    </div>
-                    <p className="text-sm text-ink leading-relaxed font-sans">
-                      &ldquo;Systematic token structures, WCAG AAA accessibility, and rigid spatial scales bring harmony across 100+ components.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-2 pt-2 border-t border-hairline text-[11px] font-mono text-ink-muted">
-                      <span>SWISS GRID</span>
-                      <span>·</span>
-                      <span>DESIGN TOKENS</span>
-                      <span>·</span>
-                      <span>FIGMA VARIANTS</span>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === "code" && (
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-start">
-                      <span className="text-xs font-mono uppercase text-ink-muted">
-                        PRODUCTION // 03
-                      </span>
-                      <span className="w-2 h-2 rounded-full bg-accent" />
-                    </div>
-                    <p className="text-sm text-ink leading-relaxed font-sans">
-                      &ldquo;Bridging the gap between Figma and production code through semantic HTML, TypeScript, modern React, and performant CSS.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-2 pt-2 border-t border-hairline text-[11px] font-mono text-ink-muted">
-                      <span>REACT / NEXT.JS</span>
-                      <span>·</span>
-                      <span>TYPESCRIPT</span>
-                      <span>·</span>
-                      <span>TAILWIND CSS</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Micro Technical Details */}
-                <div className="pt-3 border-t border-hairline flex justify-between text-[10px] font-mono text-ink-muted">
-                  <span>DISCIPLINE: DUAL HYBRID</span>
-                  <span>ACCESSIBILITY: AAA TARGET</span>
-                </div>
+                {/* Editorial Paragraph (from reference design) */}
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans max-w-sm">
+                  My work explores digital experiences that feel intuitive, where every screen hides a story. Through code, interaction, and structure, I craft interfaces that define the tone of products.
+                </p>
               </div>
+            </div>
 
-              {/* Composition Footer Spec */}
-              <div className="pt-4 flex justify-between items-center text-[10px] font-mono text-ink-muted">
-                <span>INDEX REF: AJ-2024-FOLIO</span>
-                <span>FIGMA → CODE WORKFLOW</span>
+            {/* Right Column: High-Fashion Amber/Terracotta Editorial Portrait */}
+            <div className="lg:col-span-5 relative w-full min-h-[380px] sm:min-h-[460px] lg:min-h-[520px]">
+              <div className="relative w-full h-full rounded-md overflow-hidden bg-[#241E1A] shadow-md border border-hairline/80">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activePhoto}
+                    initial={{ opacity: 0, scale: 1.02 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[520px]"
+                  >
+                    <Image
+                      src={portraits[activePhoto].src}
+                      alt={portraits[activePhoto].alt}
+                      fill
+                      priority
+                      className="object-cover object-center filter contrast-[1.04]"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                    />
+                    {/* Warm ambient sunset overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Signature Square White Badge with Arrow in Bottom Left of Photo */}
+                <button
+                  onClick={scrollToWork}
+                  aria-label="View Selected Work"
+                  className="absolute bottom-0 left-0 z-20 w-12 h-12 sm:w-14 sm:h-14 bg-white text-ink flex items-center justify-center hover:bg-ink hover:text-white transition-colors duration-200 shadow-lg border-t border-r border-hairline"
+                >
+                  <ArrowUpRight size={22} className="stroke-[2.2]" />
+                </button>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Selected Work Scroll Indicator */}
-        <div className="mt-16 sm:mt-24 pt-6 border-t border-hairline flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs font-mono text-ink-muted gap-4">
-          <div className="flex items-center gap-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-ink inline-block" />
-            <span className="uppercase tracking-widest text-ink font-medium">
-              SELECTED CLIENT &amp; PRODUCT ARCHITECTURE (2022 — 2024)
+          {/* Bottom Bar: Scroll Down & Pagination Dots */}
+          <div className="px-6 sm:px-10 py-5 border-t border-hairline/60 flex items-center justify-between text-xs font-mono text-ink-muted">
+            <span className="hidden sm:inline text-[11px] tracking-wider">
+              BASED IN INDIA / WORKING GLOBALLY
             </span>
-          </div>
 
-          <a
-            href="#work"
-            className="group flex items-center gap-2 text-ink hover:text-ink-muted transition-colors"
-          >
-            <span className="uppercase tracking-wider">SCROLL TO EXPLORE ARCHIVE</span>
-            <MoveDown size={14} className="group-hover:translate-y-1 transition-transform" />
-          </a>
+            {/* Center: Scroll Down Indicator */}
+            <button
+              onClick={scrollToWork}
+              className="flex items-center gap-2 hover:text-ink transition-colors mx-auto sm:mx-0 group"
+            >
+              <Mouse size={14} className="group-hover:translate-y-0.5 transition-transform" />
+              <span className="uppercase tracking-widest text-[10px]">
+                Scroll Down
+              </span>
+            </button>
+
+            {/* Right: Interactive Carousel Dots */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setActivePhoto(0)}
+                aria-label="Show portrait 1"
+                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  activePhoto === 0
+                    ? "bg-ink scale-110"
+                    : "border border-ink/40 bg-transparent hover:border-ink"
+                }`}
+              />
+              <button
+                onClick={() => setActivePhoto(1)}
+                aria-label="Show portrait 2"
+                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  activePhoto === 1
+                    ? "bg-ink scale-110"
+                    : "border border-ink/40 bg-transparent hover:border-ink"
+                }`}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

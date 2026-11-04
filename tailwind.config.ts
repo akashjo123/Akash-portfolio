@@ -42,6 +42,15 @@ const config: Config = {
           "Consolas",
           "monospace",
         ],
+        serif: [
+          "Playfair Display",
+          "Didot",
+          "Bodoni MT",
+          "Cinzel",
+          "Baskerville",
+          "Georgia",
+          "serif",
+        ],
       },
       letterSpacing: {
         tightest: "-0.04em",
