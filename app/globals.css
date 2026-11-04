@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-canvas: #F4F2ED;
+  --color-ink: #171717;
+  --color-ink-muted: #77746D;
+  --color-surface: #EAE8E1;
+  --color-hairline: #D9D6CE;
+  --color-accent: #A8B7A3;
+}
+
+html {
+  background-color: #F4F2ED;
+  color: #171717;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #171717;
+  color: #F4F2ED;
+}
+
+/* Custom scrollbar matching editorial aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F2ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9D6CE;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A8B7A3;
+}
+
+/* Editorial hairline border utilities */
+.border-hairline {
+  border-color: #D9D6CE;
+}
+
+.hairline-b {
+  border-bottom: 1px solid #D9D6CE;
+}
+
+.hairline-t {
+  border-top: 1px solid #D9D6CE;
+}
+
+.hairline-l {
+  border-left: 1px solid #D9D6CE;
+}
+
+.hairline-r {
+  border-right: 1px solid #D9D6CE;
+}
+
+/* Subtle grain overlay for tactile editorial feel */
+.bg-canvas-pattern {
+  background-color: #F4F2ED;
+  background-image: radial-gradient(rgba(23, 23, 23, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Swiss typography rhythm */
+.editorial-title {
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.editorial-sub {
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
+}
+
